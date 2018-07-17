@@ -106,9 +106,7 @@ class m180717_042412_add_matrix_field extends Migration
         // Find the field
         $contentMatrix = Craft::$app->fields->getFieldByHandle("exampleContents");
 
-        // Delete the field if it exists
-        if (!is_null($contentMatrix)) {
-            Craft::$app->fields->deleteFieldById($contentMatrix->id);
-        }
+        // Delete it
+        return (Craft::$app->fields->deleteFieldById($contentMatrix->id));
     }
 }

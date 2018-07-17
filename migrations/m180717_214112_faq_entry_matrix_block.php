@@ -58,8 +58,10 @@ class m180717_214112_faq_entry_matrix_block extends Migration
         foreach ($blockTypes as $blockType) {
             if ($blockType->handle == "faqs") {
                 // And delete it
-                Craft::$app->matrix->deleteBlockType($blockType);
+                return (Craft::$app->matrix->deleteBlockType($blockType));
             }
         }
+
+        return false;
     }
 }

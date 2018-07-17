@@ -38,7 +38,7 @@ class m180717_014246_add_text_field extends Migration
         ]);
 
         // Save the field
-        Craft::$app->getFields()->saveField($introField);
+        return (Craft::$app->getFields()->saveField($introField));
     }
 
     /**
@@ -49,9 +49,7 @@ class m180717_014246_add_text_field extends Migration
         // Find the field
         $introField = Craft::$app->fields->getFieldByHandle("introText");
 
-        // Delete the field if it exists
-        if (!is_null($introField)) {
-            Craft::$app->fields->deleteFieldById($introField->id);
-        }
+        // Delete it
+        return (Craft::$app->fields->deleteFieldById($introField->id));
     }
 }

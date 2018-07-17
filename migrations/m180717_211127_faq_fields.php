@@ -66,13 +66,9 @@ class m180717_211127_faq_fields extends Migration
         $answer = Craft::$app->fields->getFieldByHandle("exampleFaqAnswer");
 
         // Delete the question field if exists
-        if (!is_null($question)) {
-            Craft::$app->fields->deleteFieldById($question->id);
-        }
-
-        // Delete the answer field if exists
-        if (!is_null($answer)) {
-            Craft::$app->fields->deleteFieldById($answer->id);
-        }
+        return (
+            Craft::$app->fields->deleteFieldById($question->id) &&
+            Craft::$app->fields->deleteFieldById($answer->id)
+        );
     }
 }

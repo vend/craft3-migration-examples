@@ -20,7 +20,7 @@ class m180716_072845_add_example_group extends Migration
         ]);
 
         // Save the group
-        Craft::$app->fields->saveGroup($group);
+        return (Craft::$app->fields->saveGroup($group));
     }
 
     /**
@@ -28,6 +28,7 @@ class m180716_072845_add_example_group extends Migration
      */
     public function safeDown()
     {
+        // Find the group
         $group = (new \craft\db\Query())
             ->select("id")
             ->from("fieldgroups")
@@ -35,6 +36,6 @@ class m180716_072845_add_example_group extends Migration
             ->one();
 
         // Delete the group
-        Craft::$app->fields->deleteGroupById($group["id"]);
+        return (Craft::$app->fields->deleteGroupById($group["id"]));
     }
 }

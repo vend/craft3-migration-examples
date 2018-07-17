@@ -62,8 +62,10 @@ class m180717_045639_add_block_type_to_matrix extends Migration
         foreach ($blockTypes as $blockType) {
             if ($blockType->handle == "openingHours") {
                 // And delete it
-                Craft::$app->matrix->deleteBlockType($blockType);
+                return (Craft::$app->matrix->deleteBlockType($blockType));
             }
         }
+
+        return false;
     }
 }

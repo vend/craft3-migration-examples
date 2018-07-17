@@ -54,9 +54,9 @@ class m180717_051035_add_field_to_block_type extends Migration
                     ])
                 );
 
-                // And finally save the fields and then the blocktype
+                // And finally set the fields and then the blocktype
                 $blockType->setFields($fields);
-                Craft::$app->matrix->saveBlockType($blockType);
+                return (Craft::$app->matrix->saveBlockType($blockType));
             }
         }
     }
@@ -82,10 +82,12 @@ class m180717_051035_add_field_to_block_type extends Migration
                 foreach ($fields as $field) {
                     if ($field->handle == "textColor") {
                         // And delete it
-                        Craft::$app->fields->deleteFieldById($field->id);
+                        return (Craft::$app->fields->deleteFieldById($field->id));
                     }
                 }
             }
         }
+
+        return false;
     }
 }

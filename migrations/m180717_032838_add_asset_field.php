@@ -49,7 +49,7 @@ class m180717_032838_add_asset_field extends Migration
         ]);
 
         // Save the field
-        Craft::$app->getFields()->saveField($headerImage);
+        return (Craft::$app->getFields()->saveField($headerImage));
     }
 
     /**
@@ -60,9 +60,7 @@ class m180717_032838_add_asset_field extends Migration
         // Find the field
         $headerImage = Craft::$app->fields->getFieldByHandle("headerImage");
 
-        // Delete the field if it exists
-        if (!is_null($headerImage)) {
-            Craft::$app->fields->deleteFieldById($headerImage->id);
-        }
+        // Delete it
+        return (Craft::$app->fields->deleteFieldById($headerImage->id));
     }
 }
